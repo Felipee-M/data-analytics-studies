@@ -1,16 +1,16 @@
-# Data Analytics Studies
+# Data Analytics Lab
 
 Repository created to document my learning journey in **Data Analytics**.
 
-This project contains datasets exploration, database modeling and analytical queries developed while studying **SQL, PostgreSQL and Python for data analysis**.
+This project focuses on developing practical skills in **SQL, PostgreSQL, data modeling and analytical querying** while working with real datasets.
 
-The goal is to progressively build practical projects while strengthening core concepts used in real data analytics workflows.
+The objective is to progressively build **portfolio-ready data projects** that simulate real data analytics workflows.
 
 ---
 
 # 📊 Technologies
 
-Technologies and tools currently used in this repository:
+Tools and technologies currently used in this repository:
 
 - SQL
 - PostgreSQL
@@ -20,25 +20,27 @@ Technologies and tools currently used in this repository:
 
 ---
 
-# 📚 Learning Track
+# 📚 Learning Focus
 
-This repository is part of my transition and professional development in **Data Analytics**.
-
-Topics currently being studied:
+Topics currently being studied and practiced:
 
 - SQL fundamentals
 - Data modeling
 - Database relationships
-- Data querying
+- Analytical querying
 - Data aggregation
 - Exploratory data analysis
 - Data visualization *(next step)*
 
 ---
 
-# 🚀 Current Progress
+# 🚀 Current Projects
 
 ## Sprint 1 — SQL Fundamentals
+
+Dataset used:
+
+- Superstore Dataset
 
 Concepts practiced:
 
@@ -46,11 +48,7 @@ Concepts practiced:
 - DISTINCT
 - ORDER BY
 - GROUP BY
-- Aggregation functions (SUM)
-
-Dataset used:
-
-- Superstore dataset
+- Aggregation functions (SUM, AVG, COUNT)
 
 Example query:
 
@@ -60,10 +58,7 @@ FROM superstore
 GROUP BY order_date
 ORDER BY SUM(sales) DESC;
 ```
-
----
-
-## Sprint 2 — E-commerce Dataset Exploration
+## Sprint 2 — Olist E-commerce Dataset
 
 Dataset used:
 
@@ -72,11 +67,11 @@ Dataset used:
 Activities performed:
 
 - Data ingestion into PostgreSQL
-- Schema organization (`olist`)
+- Schema creation and organization
 - Table relationship analysis
-- Foreign key creation
+- Foreign key validation
 - Join validation queries
-- Initial analytical exploration
+- Analytical SQL queries
 
 Main tables explored:
 
@@ -103,42 +98,67 @@ GROUP BY oi.product_id
 LIMIT 10;
 ```
 
----
-
 # 📂 Repository Structure
 
 ```
-data-analytics-studies
+data-analytics-lab
+│
+├── dashboards
 │
 ├── datasets
-│   ├── superstore
-│   └── olist
+│ ├── olist_dataset
+│ └── superstore
 │
-├── sprint_01_sql
-│   └── queries.sql
+├── docs
+│ ├── schema_diagram_olist.png
+│ └── schemas_notes.md
 │
-├── sprint_02_olist
-│   ├── ingestion
-│   ├── relationships
-│   ├── validations
-│   └── analysis
+├── notebooks
+│
+├── sql
+│ ├── analysis
+│ │ ├── olist_analysis.sql
+│ │ └── superstore_analysis.sql
+│ │
+│ ├── ingestion
+│ │ ├── 01_create_schemas.sql
+│ │ ├── 02_ingestion_superstore.sql
+│ │ ├── 03_ingestion_olist.sql
+│ │ ├── 04_modeling_olist.sql
+│ │ └── 05_validation_olist.sql
+│ │
+│ └── constraint
 │
 └── README.md
 ```
 
 ---
 
-# 🎯 Project Goals
+# 📊 Key Analytical Concepts Practiced
 
-Develop a solid foundation in:
+Some important data analytics practices applied in this project:
 
-- SQL
-- Data modeling
-- Data analysis
-- Python for data analysis
-- Data visualization
+- metric granularity awareness  
+- avoiding duplicated counts caused by joins  
+- distinguishing **order-level vs item-level metrics**  
+- analytical SQL query structuring  
+- use of **CTEs**  
+- use of **window functions**
 
-and progressively build **portfolio-ready data projects**.
+---
+
+# 🎯 Learning Goal
+
+Develop a strong foundation in:
+
+- SQL  
+- Data modeling  
+- Analytical thinking  
+- Data analysis workflows  
+- Python for data analysis  
+- Data visualization  
+
+while progressively building a **professional data analytics portfolio**.
 
 ---
 
