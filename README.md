@@ -1,56 +1,53 @@
 # Data Analytics Lab
 
-Repository created to document my learning journey in **Data Analytics**.
+Repository created to document my journey into **Data Analytics**, focusing on building strong foundations in **SQL, data modeling, and analytical thinking** through hands-on projects using real-world datasets.
 
-This project focuses on developing practical skills in **SQL, PostgreSQL, data modeling and analytical querying** while working with real datasets.
-
-The objective is to progressively build **portfolio-ready data projects** that simulate real data analytics workflows.
+The goal of this repository is to simulate real data workflows and progressively build **portfolio-ready projects** that demonstrate both technical and analytical skills.
 
 ---
 
 # 📊 Technologies
 
-Tools and technologies currently used in this repository:
+Tools and technologies used in this project:
 
 - SQL
 - PostgreSQL
 - DBeaver
 - Python *(learning stage)*
-- Data analysis concepts
+- Git & GitHub
 
 ---
 
 # 📚 Learning Focus
 
-Topics currently being studied and practiced:
+Core topics currently being developed:
 
-- SQL fundamentals
-- Data modeling
-- Database relationships
-- Analytical querying
-- Data aggregation
-- Exploratory data analysis
+- SQL fundamentals and advanced querying
+- Data modeling and relational databases
+- Data aggregation and metric design
+- Analytical problem solving
+- Exploratory data analysis (EDA)
+- Data storytelling *(in progress)*
 - Data visualization *(next step)*
 
 ---
 
-# 🚀 Current Projects
+# 🚀 Projects
 
-## Sprint 1 — SQL Fundamentals
+## 🟢 Sprint 1 — SQL Fundamentals
 
-Dataset used:
+**Dataset used:**
 
 - Superstore Dataset
 
-Concepts practiced:
+**Concepts practiced:**
 
-- SELECT
-- DISTINCT
+- SELECT, DISTINCT
 - ORDER BY
 - GROUP BY
-- Aggregation functions (SUM, AVG, COUNT)
+- Aggregations (SUM, AVG, COUNT)
 
-Example query:
+**Example query:**
 
 ```sql
 SELECT order_date, SUM(sales)
@@ -58,13 +55,16 @@ FROM superstore
 GROUP BY order_date
 ORDER BY SUM(sales) DESC;
 ```
-## Sprint 2 — Olist E-commerce Dataset
 
-Dataset used:
+---
+
+## 🟡 Sprint 2 — Olist E-commerce Dataset
+
+**Dataset used:**
 
 - Olist Brazilian E-commerce Dataset
 
-Activities performed:
+**Activities performed:**
 
 - Data ingestion into PostgreSQL
 - Schema creation and organization
@@ -73,7 +73,7 @@ Activities performed:
 - Join validation queries
 - Analytical SQL queries
 
-Main tables explored:
+**Main tables explored:**
 
 - customers
 - orders
@@ -85,7 +85,7 @@ Main tables explored:
 - geolocation
 - product_category_name_translation
 
-Example validation query:
+**Example validation query:**
 
 ```sql
 SELECT
@@ -97,6 +97,67 @@ JOIN olist.order_items oi
 GROUP BY oi.product_id
 LIMIT 10;
 ```
+
+---
+
+## 🔵 Sprint 3 — Advanced Analytical Queries
+
+**Dataset used:**
+
+- Olist Brazilian E-commerce Dataset
+
+**Activities performed:**
+
+- Development of analytical queries using CTEs
+- Development of analytical queries using subqueries
+- Revenue analysis by customer, order, and month
+- Identification of recurring customers
+- Comparison of metrics against average values
+- Practice with business-oriented SQL logic
+
+**Concepts practiced:**
+
+- Common Table Expressions (CTEs)
+- Subqueries
+- EXISTS
+- HAVING
+- Aggregation over aggregation
+- Metric comparison with averages
+
+**Key analyses implemented:**
+
+- Top 10 customers by total revenue
+- Most sold products by quantity
+- Monthly revenue
+- Recurring customers
+- Average ticket per order
+- Customers with above-average spending
+- Products with above-average average price
+- Orders with above-average value
+- Customers with at least 1 delivered order
+- Months with above-average revenue
+
+**Example query:**
+
+```sql
+WITH total_per_order AS (
+    SELECT
+        order_id,
+        SUM(price + freight_value) AS total_revenue
+    FROM order_items
+    GROUP BY order_id
+),
+valid_orders AS (
+    SELECT
+        o.order_id
+    FROM orders o
+    WHERE o.order_approved_at IS NOT NULL
+) total_per_order tpo
+JOIN valid_orders vo
+    ON tpo.order_id = vo.order_id;
+```
+
+---
 
 # 📂 Repository Structure
 
@@ -118,6 +179,7 @@ data-analytics-lab
 ├── sql
 │ ├── analysis
 │ │ ├── olist_analysis.sql
+│ │ └── olist_advanced_queries.sql
 │ │ └── superstore_analysis.sql
 │ │
 │ ├── ingestion
@@ -136,35 +198,42 @@ data-analytics-lab
 
 # 📊 Key Analytical Concepts Practiced
 
-Some important data analytics practices applied in this project:
+This project applies important real-world data analysis principles:
 
 - metric granularity awareness  
-- avoiding duplicated counts caused by joins  
-- distinguishing **order-level vs item-level metrics**  
-- analytical SQL query structuring  
-- use of **CTEs**  
-- use of **window functions**
+- avoiding duplication caused by joins  
+- distinction between **order-level vs item-level metrics**  
+- structured analytical SQL development  
+- use of **CTEs and subqueries** for complex logic  
+- performance vs readability trade-offs  
 
 ---
 
-# 🎯 Learning Goal
+# 🎯 Learning Goals
 
-Develop a strong foundation in:
+Build a strong foundation in:
 
-- SQL  
-- Data modeling  
-- Analytical thinking  
-- Data analysis workflows  
-- Python for data analysis  
-- Data visualization  
+- SQL (advanced level)
+- Data modeling
+- Analytical thinking
+- Data workflows
+- Python for data analysis
+- Data visualization (Power BI / future dashboards)
 
-while progressively building a **professional data analytics portfolio**.
+---
+
+# 📌 Next Steps
+
+- Implement exploratory data analysis (EDA) in Python  
+- Build dashboards (Power BI)  
+- Create end-to-end data projects (SQL + Python + Visualization)  
+- Improve storytelling and business insights  
 
 ---
 
 # 👨‍💻 Author
 
-Felipe Mendes
+Felipe Mendes  
 
 GitHub:  
 https://github.com/Felipee-M
