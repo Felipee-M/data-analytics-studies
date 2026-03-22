@@ -47,15 +47,6 @@ Core topics currently being developed:
 - GROUP BY
 - Aggregations (SUM, AVG, COUNT)
 
-**Example query:**
-
-```sql
-SELECT order_date, SUM(sales)
-FROM superstore
-GROUP BY order_date
-ORDER BY SUM(sales) DESC;
-```
-
 ---
 
 ## 🟡 Sprint 2 — Olist E-commerce Dataset
@@ -85,19 +76,6 @@ ORDER BY SUM(sales) DESC;
 - geolocation
 - product_category_name_translation
 
-**Example validation query:**
-
-```sql
-SELECT
-    oi.product_id,
-    COUNT(*)
-FROM olist.products p
-JOIN olist.order_items oi
-    ON p.product_id = oi.product_id
-GROUP BY oi.product_id
-LIMIT 10;
-```
-
 ---
 
 ## 🔵 Sprint 3 — Advanced Analytical Queries
@@ -108,12 +86,10 @@ LIMIT 10;
 
 **Activities performed:**
 
-- Development of analytical queries using CTEs
-- Development of analytical queries using subqueries
+- Development of analytical queries using CTEs and subqueries
 - Revenue analysis by customer, order, and month
 - Identification of recurring customers
 - Comparison of metrics against average values
-- Practice with business-oriented SQL logic
 
 **Concepts practiced:**
 
@@ -126,36 +102,45 @@ LIMIT 10;
 
 **Key analyses implemented:**
 
-- Top 10 customers by total revenue
-- Most sold products by quantity
+- Top customers by revenue
+- Most sold products
 - Monthly revenue
 - Recurring customers
-- Average ticket per order
-- Customers with above-average spending
-- Products with above-average average price
-- Orders with above-average value
-- Customers with at least 1 delivered order
-- Months with above-average revenue
+- Average ticket
+- Above-average performance analysis
 
-**Example query:**
+---
 
-```sql
-WITH total_per_order AS (
-    SELECT
-        order_id,
-        SUM(price + freight_value) AS total_revenue
-    FROM order_items
-    GROUP BY order_id
-),
-valid_orders AS (
-    SELECT
-        o.order_id
-    FROM orders o
-    WHERE o.order_approved_at IS NOT NULL
-) total_per_order tpo
-JOIN valid_orders vo
-    ON tpo.order_id = vo.order_id;
-```
+## 🟣 Sprint 4 — Window Functions & Advanced Analytics
+
+**Dataset used:**
+
+- Olist Brazilian E-commerce Dataset
+
+**Activities performed:**
+
+- Ranking of products and customers
+- Revenue share and cumulative contribution analysis
+- Monthly performance analysis (MoM)
+- Customer purchase history construction
+
+**Concepts practiced:**
+
+- Window Functions
+- RANK()
+- ROW_NUMBER()
+- FIRST_VALUE()
+- LAG()
+- Cumulative metrics (running totals)
+- Analytical partitioning
+
+**Key analyses implemented:**
+
+- Product ranking by revenue and volume
+- Customer ranking by total spend
+- Revenue share and cumulative contribution (Pareto logic)
+- Monthly variation of orders and revenue (MoM)
+- Customer purchase journey tracking
 
 ---
 
@@ -165,6 +150,8 @@ JOIN valid_orders vo
 data-analytics-lab
 │
 ├── dashboards
+│
+├── data_env
 │
 ├── datasets
 │ ├── olist_dataset
@@ -176,11 +163,16 @@ data-analytics-lab
 │
 ├── notebooks
 │
+├── projects
+│
 ├── sql
 │ ├── analysis
 │ │ ├── olist_analysis.sql
-│ │ └── olist_advanced_queries.sql
+│ │ ├── olist_advanced_queries.sql
+│ │ ├── olist_window_analysis.sql
 │ │ └── superstore_analysis.sql
+│ │
+│ ├── constraint
 │ │
 │ ├── ingestion
 │ │ ├── 01_create_schemas.sql
@@ -189,10 +181,17 @@ data-analytics-lab
 │ │ ├── 04_modeling_olist.sql
 │ │ └── 05_validation_olist.sql
 │ │
-│ └── constraint
+│ └── validation
 │
+├── .gitignore
 └── README.md
 ```
+
+
+
+
+
+
 
 ---
 
@@ -204,7 +203,10 @@ This project applies important real-world data analysis principles:
 - avoiding duplication caused by joins  
 - distinction between **order-level vs item-level metrics**  
 - structured analytical SQL development  
-- use of **CTEs and subqueries** for complex logic  
+- use of **CTEs and window functions**  
+- cumulative analysis (running totals and contribution %)  
+- ranking and segmentation logic  
+- analytical ordering and partitioning  
 - performance vs readability trade-offs  
 
 ---
@@ -218,7 +220,7 @@ Build a strong foundation in:
 - Analytical thinking
 - Data workflows
 - Python for data analysis
-- Data visualization (Power BI / future dashboards)
+- Data visualization (Power BI / dashboards)
 
 ---
 
